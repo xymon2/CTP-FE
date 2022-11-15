@@ -7,3 +7,9 @@ export const getProblemList = () => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const getOneProblem = (id: string) => {
+  return axiosClient.get(`/api/v0/problems/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
