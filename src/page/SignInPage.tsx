@@ -1,7 +1,7 @@
 import SignInFormContainer from "../container/SignInFormContainer";
 import "./SignInPage.css";
 
-import logo from "../static/litcode-logo.png";
+import logo from "../static/logo.png";
 
 const SignInPage = () => {
   return (
