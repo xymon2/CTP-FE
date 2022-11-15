@@ -17,3 +17,8 @@ export const LoginState = atom<boolean>({
   key: "loginInfo",
   default: false,
 });
+
+export const TokenState = atom<string>({
+  key: "tokenInfo",
+  default: "",
+});
