@@ -1,27 +1,23 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { postUserInfoForLogin } from "../api/user";
 import SignInForm from "../component/SignInForm";
-import {
-  LoginState,
-  TokenState,
-  UserInfoType,
-  UserState,
-} from "../recoil-state/userState";
+import { LoginState, UserInfoType, UserState } from "../recoil-state/userState";
 
 const SignInFormContainer = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [loggedIn, setLoggedIn] = useRecoilState<boolean>(LoginState);
   const setUserInfo = useSetRecoilState<UserInfoType>(UserState);
-  const setToken = useSetRecoilState<string>(TokenState);
+  const navigate = useNavigate();
 
   const signIn = async () => {
     try {
       const token = (await postUserInfoForLogin(id, pw)).data;
-      console.log(token);
-      setToken(token);
+      sessionStorage.setItem("accessToken", token);
       setLoggedIn(true);
+      navigate("/problems");
     } catch (e: any) {
       alert("Invalid id or password");
     }
