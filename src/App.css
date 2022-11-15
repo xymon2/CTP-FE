@@ -1,6 +1,8 @@
 .App {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+  min-width: 800px;
+  min-height: 800px;
   font-size: calc(15px + 1vmin);
   font-family: "Rubik", sans-serif;
   text-align: center;
