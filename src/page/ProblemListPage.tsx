@@ -24,7 +24,6 @@ const ProblemListPage = () => {
           <div>
             This is Litcode coding test.
             <br /> Choose a problem.
-            <br /> Choose a problem.
           </div>
         </div>
       </div>
