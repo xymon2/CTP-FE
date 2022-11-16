@@ -14,7 +14,7 @@ const ProblemListPage = () => {
       const { data } = await getProblemList();
       setProblemList(data);
     })();
-  });
+  }, []);
 
   return (
     <div className="problemlist-page">
