@@ -1,5 +1,6 @@
 const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 module.exports = {
   resolve: {
@@ -25,6 +26,13 @@ module.exports = {
         loaders: ["file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]"],
       },
       {
+        test: /monaco-editor[\\/].*\.js$/,
+        use: {
+          loader: "babel-loader",
+          options: { presets: ["@babel/preset-env"] },
+        },
+      },
+      {
         test: /\.ttf$/,
         use: ["file-loader"],
       },
@@ -34,6 +42,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       favicon: "../src/static/favicon.ico",
       template: "index.html",
+    }),
+    new MonacoWebpackPlugin({
+      languages: ["json", "javascript", "python", "java"],
     }),
   ],
 };
