@@ -1,0 +1,41 @@
+.test-page {
+  background-color: white;
+  min-width: 1000px;
+  height: 100%;
+}
+
+.testpage-header {
+  background-color: #282c34;
+  height: 100px;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+}
+
+.header-logo-img {
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 80px;
+  height: 80px;
+  float: left;
+}
+
+.header-text {
+  margin-left: 20px;
+  display: flex;
+  float: left;
+  align-content: center;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.test-description {
+  margin-left: 7px;
+  color: black;
+  float: left;
+  width: 400px;
+  text-align: left;
+  font-size: 18px;
+}
