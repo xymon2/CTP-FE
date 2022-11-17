@@ -3,7 +3,7 @@ import React, { Dispatch, FC, SetStateAction } from "react";
 interface SignInProps {
   setId: Dispatch<SetStateAction<string>>;
   setPw: Dispatch<SetStateAction<string>>;
-  signIn: () => void;
+  signIn: () => Promise<void>;
 }
 
 const SignInForm: FC<SignInProps> = ({ setId, setPw, signIn }) => {
@@ -15,9 +15,9 @@ const SignInForm: FC<SignInProps> = ({ setId, setPw, signIn }) => {
     setPw(e.target.value);
   };
 
-  const submitInfo = (e: React.FormEvent) => {
+  const submitInfo = async (e: React.FormEvent) => {
     e.preventDefault();
-    signIn();
+    await signIn();
   };
 
   return (

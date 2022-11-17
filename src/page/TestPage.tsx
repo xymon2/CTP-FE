@@ -1,33 +1,21 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getOneProblem } from "../api/problem";
-import ProblemDescription from "../component/ProblemDescription";
+import TestPageContainer from "../container/TestPageContainer";
 import logo from "../static/logo.png";
 import "./TestPage.css";
 
 const TestPage = () => {
-  let { problemId } = useParams();
-  const [description, setDescription] = useState<string>("");
-
-  useEffect(() => {
-    (async () => {
-      if (problemId) {
-        const { data } = await getOneProblem(problemId);
-        console.log(data);
-        setDescription(data.description);
-      }
-      // setProblemList(data);
-    })();
-  }, [problemId]);
-
   return (
     <div className="test-page">
       <div className="testpage-header">
-        <img className="header-logo-img" src={logo} alt="logo" />
+        <img
+          className="header-logo-img"
+          src={logo}
+          alt="logo"
+          draggable={false}
+        />
         <div className="header-text"> Litcode</div>
       </div>
-      <div className="test-description">
-        <ProblemDescription mdString={description} />
+      <div className="test-page-body">
+        <TestPageContainer />
       </div>
     </div>
   );

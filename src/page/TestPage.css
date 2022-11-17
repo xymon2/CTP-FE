@@ -1,7 +1,8 @@
 .test-page {
   background-color: white;
   min-width: 1000px;
-  height: 100%;
+  height: 100vh;
+  min-height: 1000px;
 }
 
 .testpage-header {
@@ -31,6 +32,13 @@
   font-size: 25px;
 }
 
+.test-page-body {
+  display: flex;
+  width: 100vw;
+  min-width: 1000px;
+  height: 100%;
+}
+
 .test-description {
   margin-left: 7px;
   color: black;
@@ -38,4 +46,129 @@
   width: 400px;
   text-align: left;
   font-size: 18px;
+}
+
+.test-editor-body {
+  display: flex;
+  background-color: #282c34;
+  margin-left: 30px;
+  text-align: left;
+  height: 100%;
+  flex-direction: column;
+  width: calc(100vw - 370px);
+  min-width: 600px;
+}
+
+/* code editor */
+.test-editor-header {
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  height: 75px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #282c34;
+}
+
+.lang-selector {
+  background-color: white;
+  border: 0.1px rgba(12, 13, 15, 0.15);
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.test-editor {
+  display: flex;
+  height: 60vh;
+  width: 100%;
+}
+
+/* code result under editor */
+.test-result {
+  display: flex;
+  flex-direction: column;
+  min-height: 470px;
+  height: 40vh;
+  font-size: 13px;
+  padding-top: 20px;
+  padding-left: 20px;
+  background-color: #282c34;
+}
+.test-result > div {
+  margin-left: 5px;
+}
+.test-result > b {
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.test-input {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.test-text {
+  display: flex;
+  background-color: #42464f;
+  color: white;
+  width: 90%;
+  border-radius: 5px;
+  border: 2px #282c34;
+  min-height: 45px;
+  max-height: 150px;
+  overflow: scroll;
+  font-family: Consolas, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+
+  font-size: 14px;
+  align-items: center;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.test-text:disabled {
+  background-color: #292c32;
+}
+
+/* run and submit buttons */
+.test-result-header {
+  margin-bottom: 20px;
+}
+.run-btn {
+  background-color: #fafbfc;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  color: #24292e;
+  font-size: 18px;
+  font-weight: 500;
+  vertical-align: middle;
+  width: 70px;
+  height: 30px;
+}
+
+.run-btn:hover {
+  background-color: lightgray;
+}
+.run-btn:disabled {
+  background-color: rgb(168, 165, 165);
+}
+
+.submit-btn {
+  margin-left: 10px;
+  background-color: rgb(84, 84, 201);
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  vertical-align: middle;
+  width: 70px;
+  height: 30px;
+}
+
+.submit-btn:hover,
+:disabled {
+  background-color: rgb(51, 51, 100);
 }
