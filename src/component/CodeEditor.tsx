@@ -34,28 +34,26 @@ const CodeEditor: FC<CodeEditorProps> = ({
 
   return (
     <>
-      <div className="test-editor-body">
-        <div className="test-editor-header">
-          solution
-          <select
-            className="lang-selector"
-            onChange={onLangChange}
-            defaultValue={language}
-          >
-            <option value="javascript">javascript</option>
-            <option value="python">python</option>
-          </select>
-        </div>
-        <div className="test-editor">
-          <MonacoEditor
-            language={language}
-            theme="vs-dark"
-            value={code[language]}
-            options={options}
-            onChange={onCodeChange}
-            editorDidMount={editorDidMount}
-          />
-        </div>
+      <div className="test-editor-header">
+        solution
+        <select
+          className="lang-selector"
+          onChange={onLangChange}
+          defaultValue={language}
+        >
+          <option value="javascript">javascript</option>
+          <option value="python">python</option>
+        </select>
+      </div>
+      <div className="test-editor">
+        <MonacoEditor
+          language={language}
+          theme="vs-dark"
+          value={code[language]}
+          options={options}
+          onChange={onCodeChange}
+          editorDidMount={editorDidMount}
+        />
       </div>
     </>
   );

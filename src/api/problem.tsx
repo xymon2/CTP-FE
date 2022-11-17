@@ -13,3 +13,18 @@ export const getOneProblem = (id: string) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const postRunCode = (
+  id: string,
+  language: string,
+  code: string,
+  input: string
+) => {
+  return axiosClient.post(
+    `/api/v0/problems/${id}/run`,
+    { language: language, code: code, input: input },
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
+};

@@ -1,8 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getOneProblem } from "../api/problem";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { getOneProblem, postRunCode } from "../api/problem";
 import CodeEditor from "../component/CodeEditor";
+import CodeResult from "../component/CodeResult";
 import ProblemDescription from "../component/ProblemDescription";
+import { LoginState } from "../recoil-state/userState";
 
 export interface CodeInfo {
   javascript: string;
@@ -31,12 +34,12 @@ const TestPageContainer = () => {
   const [input, setInput] = useState<string>("");
   const [result, setResult] = useState("");
   const [stdout, setStdout] = useState("");
+  const setLoggedIn = useSetRecoilState<boolean>(LoginState);
 
   useEffect(() => {
     (async () => {
       if (problemId) {
         const { data } = await getOneProblem(problemId);
-        console.log(data);
         const skeletonCodes = {
           ...emptyCode,
         };
@@ -57,33 +60,44 @@ const TestPageContainer = () => {
     setCode(newCodes);
   };
 
-  //   const handleLangChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //     switch (e.target.value) {
-  //       case "python":
-  //         setCode(checkCodeInCookie("python", pySkeletonCode));
-  //         break;
+  const runCode = async () => {
+    try {
+      const res = await postRunCode(problemId || "", lang, code[lang], input);
+      setResult(res.data.output);
+    } catch (e: any) {
+      if (e.response.status === 500) {
+        setStdout("");
+        setResult("Server Error");
+      } else if (e.response.status === 403 || e.response.status === 401) {
+        setLoggedIn(false);
+      }
+    }
+  };
 
-  //       case "javascript":
-  //         setCode(checkCodeInCookie("javascript", jsSkeletonCode));
-  //         break;
-  //     }
-  //     setLang(e.target.value);
-  //   };
+  const submitCode = async () => {};
 
   return (
     <>
       <div className="test-description">
         <ProblemDescription mdString={description} />
-        <br />
-        {input}
       </div>
-      <div className="test-body">
+      <div className="test-editor-body">
         <CodeEditor
           language={lang}
           code={code}
           setCode={setCodeWithLang}
           setLanguage={setLang}
         />
+        <div className="test-result">
+          <CodeResult
+            input={input}
+            setInput={setInput}
+            stdout={stdout}
+            result={result}
+            run={runCode}
+            submit={submitCode}
+          />
+        </div>
       </div>
     </>
   );
