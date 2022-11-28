@@ -1,0 +1,100 @@
+.problemlist-page {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  align-items: center;
+}
+
+.problem-page-banner {
+  display: flex;
+  height: 300px;
+  width: 100%;
+  min-height: 300px;
+  background-color: gray;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.problemlist-logo {
+  margin-left: 100px;
+  height: 80%;
+  pointer-events: none;
+  float: left;
+}
+.problem-page-banner-text {
+  margin-left: 150px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 600px;
+  height: 100%;
+  display: flex;
+  align-content: center;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.problem-list {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 1000px;
+  display: inline-block;
+  height: 70%;
+  min-height: 100px;
+}
+
+.problem-list-header {
+  width: 90vw;
+  min-width: 750px;
+  max-width: 1000px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 0.7rem;
+}
+
+.problem-item {
+  width: 90vw;
+  min-width: 750px;
+  max-width: 1000px;
+  height: 40px;
+  margin-top: 5px;
+  background-color: #41454e;
+  display: inline-block;
+  border-radius: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.problem-item:hover {
+  transform: scale(
+    1.05
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.prob-no {
+  width: 10%;
+  height: 100%;
+  float: left;
+  line-height: 40px;
+  justify-content: center;
+}
+
+.prob-name {
+  width: 30%;
+  height: 100%;
+  float: left;
+  padding-left: 10px;
+  line-height: 40px;
+  justify-content: center;
+}
